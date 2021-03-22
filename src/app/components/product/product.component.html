@@ -7,7 +7,7 @@
     <input type="text"  [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
   </div>
 
-  <div *ngIf="filterText.length>2" class="alert alert-success">
+  <div *ngIf="filterText.length>2ng " class="alert alert-success">
    {{filterText}} aradınız 
   </div>
 
@@ -22,12 +22,12 @@
             <th>Stok Adedi</th>        
         </tr>
     </thead>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products | filterPipe:filterText">
         <td>{{product.productId}}</td>
         <td>{{product.productName |uppercase  }}</td>
         <td>{{product.categoryId}}</td>
         <td>{{product.unitPrice  |currency }}</td>
-        <td>{{product.unitPrice |vatAdded:10 |currency }}</td>
+        <td>{{product.unitPrice |vatAdded:18 |currency }}</td>
         <td>{{product.unitsInStock}}</td>
         
         
